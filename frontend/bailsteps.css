@@ -1,0 +1,98 @@
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7; /* Light neutral background */
+    background-image: url('https://www.transparenttextures.com/patterns/black-linen.png'); /* Textured background */
+    text-align: center; /* Center-align content */
+}
+
+/* Container for Main Content */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff; /* White content background */
+    padding: 40px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft shadow for a smooth effect */
+    position: relative;
+    z-index: 1;
+}
+
+/* Logo */
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 145px;
+    height: 125px;
+}
+
+/* Header Section */
+header {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Quote */
+.quote {
+    font-style: italic;
+    color: #e74c3c;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Step Buttons Section */
+.step-buttons {
+    margin-top: 20px; /* Space above buttons */
+}
+
+/* Button Styling */
+button {
+    display: block; /* Block-level element for full-width appearance */
+    width: 60%; /* Adjust width for responsive design */
+    margin: 15px auto; /* Center buttons */
+    padding: 18px; /* Button padding */
+    background-color: #3498db; /* Soft blue background */
+    color: #ffffff; /* White text */
+    border: 2px solid #3498db; /* Border matches button color */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 1.2rem; /* Larger font size */
+    cursor: pointer; /* Pointer cursor for buttons */
+    text-align: center; /* Center-align button text */
+    transition: all 0.3s ease-in-out; /* Smooth transition effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for button */
+}
+
+/* Button Hover Effect */
+button:hover {
+    background-color: #2980b9; /* Subtle darker blue on hover */
+    border-color: #2980b9; /* Border changes smoothly */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Footer Section */
+footer {
+    margin-top: 40px; /* Space above footer */
+    padding: 20px; /* Padding inside footer */
+    background-color: #3498db; /* Dark background for footer */
+    color: #ffffff; /* White text */
+    border-top: 5px solid #ff9f00; /* Subtle gold accent */
+}
+
+/* Footer Text */
+footer p {
+    margin: 10px 0;
+}
+
+/* Footer Social Links */
+footer .social-links a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 24px;
+}

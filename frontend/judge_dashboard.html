@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Judicial Dashboard</title>
+  <link rel="stylesheet" href="judge_dashboard.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><i class="fas fa-gavel"></i> Judicial Dashboard</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-user"></i> Judge's Name
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#" onclick="viewProfile()">Profile</a></li>
+                <li>
+                  <a class="dropdown-item" href="#" onclick="confirmLogout()">Logout</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="d-flex">
+    <div class="sidebar">
+      <a href="#overview" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard Overview</a>
+      <a href="#case-assignments"><i class="fas fa-clipboard-list"></i> Case Assignments</a>
+      <a href="#bail-requests"><i class="fas fa-balance-scale"></i> Review Bail Requests</a>
+      <a href="#judicial-decisions"><i class="fas fa-gavel"></i> Judicial Decisions</a>
+      <a href="#legal-precedents"><i class="fas fa-book"></i> Legal Precedents</a>
+      <a href="#court-schedules"><i class="fas fa-calendar-alt"></i> Court Schedules</a>
+    </div>
+
+    <div class="main-content">
+      <h2 id="overview">Dashboard Overview</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <button class="status-button pending-button" onclick="window.location.href='pending_app.html'" Applications<br>Number of pending applications: 5</button>
+        </div>
+        <div class="col-md-4">
+          <button class="status-button approved-button" onclick="viewApprovedApplications()">Approved Applications<br>Number of approved applications: 10</button>
+        </div>
+        <div class="col-md-4">
+          <button class="status-button rejected-button" onclick="viewRejectedApplications()">Rejected Applications<br>Number of rejected applications: 2</button>
+        </div>
+      </div>
+
+      <!-- Case Assignments Section -->
+      <h2 id="case-assignments" class="mt-4">Case Assignments</h2>
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Case Number</th>
+                <th scope="col">Defendant's Name</th>
+                <th scope="col">Charges</th>
+                <th scope="col">Assigned Lawyer</th>
+                <th scope="col">Assigned Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>12345</td>
+                <td>Jane Doe</td>
+                <td>Fraud</td>
+                <td>John Smith</td>
+                <td>12/01/2024</td>
+                <td>In Progress</td>
+                <td>
+                  <button class="btn btn-primary btn-sm">Update Status</button>
+                </td>
+              </tr>
+              <tr>
+                <td>67890</td>
+                <td>John Doe</td>
+                <td>Robbery</td>
+                <td>Mary Johnson</td>
+                <td>01/01/2024</td>
+                <td>Completed</td>
+                <td>
+                  <button class="btn btn-primary btn-sm">Update Status</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-success mt-3">Assign New Case</button>
+        </div>
+      </div>
+
+      <!-- Bail Requests Section -->
+      <h2 id="bail-requests" class="mt-4">Review Bail Requests</h2>
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Request ID</th>
+                <th scope="col">Prisoner Name</th>
+                <th scope="col">Case Number</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1001</td>
+                <td>Jane Doe</td>
+                <td>12345</td>
+                <td>Pending</td>
+                <td>
+                  <button class="btn btn-warning btn-sm">Approve</button>
+                  <button class="btn btn-danger btn-sm">Reject</button>
+                </td>
+              </tr>
+              <tr>
+                <td>1002</td>
+                <td>John Doe</td>
+                <td>67890</td>
+                <td>Approved</td>
+                <td>
+                  <button class="btn btn-secondary btn-sm" disabled>Approved</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- Button to navigate to search_prisoner.html -->
+          <button class="btn btn-primary mt-3" onclick="window.location.href='search_prisoner.html'">
+            Search Prisoner Details
+          </button>
+        </div>
+      </div>
+
+      <!-- Judicial Decisions Section -->
+      <h2 id="judicial-decisions" class="mt-4">Judicial Decisions</h2>
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Decision ID</th>
+                <th scope="col">Case Number</th>
+                <th scope="col">Decision</th>
+                <th scope="col">Date</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>12345</td>
+                <td>Granted Bail</td>
+                <td>12/01/2024</td>
+                <td>
+                  <button class="btn btn-info btn-sm">View Details</button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>67890</td>
+                <td>Denied Bail</td>
+                <td>01/01/2024</td>
+                <td>
+                  <button class="btn btn-info btn-sm">View Details</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Legal Precedents Section -->
+      <h2 id="legal-precedents" class="mt-4">Legal Precedents</h2>
+      <div class="card">
+        <div class="card-body">
+          <p>Here you can find a list of important legal precedents relevant to your current cases and decisions.</p>
+          <button class="btn btn-success">Add Precedent</button>
+        </div>
+      </div>
+
+      <!-- Court Schedules Section -->
+      <h2 id="court-schedules" class="mt-4">Court Schedules</h2>
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Case Number</th>
+                <th scope="col">Defendant</th>
+                <th scope="col">Courtroom</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>12/01/2024</td>
+                <td>12345</td>
+                <td>Jane Doe</td>
+                <td>Courtroom A</td>
+                <td>
+                  <button class="btn btn-primary btn-sm">View Details</button>
+                </td>
+              </tr>
+              <tr>
+                <td>01/01/2024</td>
+                <td>67890</td>
+                <td>John Doe</td>
+                <td>Courtroom B</td>
+                <td>
+                  <button class="btn btn-primary btn-sm">View Details</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2024 Judicial Dashboard. All rights reserved.</p>
+  </footer>
+
+  <!-- Logout Confirmation Modal -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to logout?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-danger" onclick="logout()">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function viewProfile() {
+      // Redirect to profile page
+      window.location.href = 'profile1.html';
+    }
+
+    function confirmLogout() {
+      // Show the modal for logout confirmation
+      const logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+      logoutModal.show();
+    }
+
+    function logout() {
+      // Perform logout operation
+      alert('Logged out successfully!');
+      window.location.href = 'home.html'; // Replace with actual login page URL
+    }
+
+    function viewPendingApplications() {
+      window.location.href = 'pending_app.html';
+    }
+
+    function viewApprovedApplications() {
+      window.location.href = 'approvrd_app.html';
+    }
+
+    function viewRejectedApplications() {
+      window.location.href = 'rejected_app.html';
+    }
+  </script>
+
+</body>
+</html>

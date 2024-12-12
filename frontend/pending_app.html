@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pending Applications</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #eaeaea;
+    }
+
+    header, footer {
+      background-color: #1a2b49;
+      color: white;
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      top: 0;
+    }
+
+    footer {
+      bottom: 0;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .nav .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav ul li {
+      display: inline;
+    }
+
+    .nav ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav ul li a:hover {
+      color: #ffc107;
+    }
+
+    .container {
+      margin-top: 120px;
+      margin-bottom: 60px;
+      padding: 20px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #1a2b49;
+      margin-bottom: 20px;
+    }
+
+    .search-filter {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .search-filter input, .search-filter select {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .badge {
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: white;
+      font-size: 0.9em;
+    }
+
+    .badge-pending {
+      background-color: #ffc107;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .button {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .approve {
+      background-color: #28a745;
+    }
+
+    .approve:hover {
+      background-color: #218838;
+    }
+
+    .reject {
+      background-color: #dc3545;
+    }
+
+    .reject:hover {
+      background-color: #c82333;
+    }
+
+    .view {
+      background-color: #007bff;
+    }
+
+    .view:hover {
+      background-color: #0069d9;
+    }
+
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%; 
+      left: 50%;
+      margin-left: -60px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+
+      table, th, td {
+        font-size: 0.9em;
+      }
+
+      .search-filter {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .action-buttons {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .button {
+        padding: 8px;
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">Bail Reckoner</div>
+      <ul>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#Approved-applications">Approved Applications</a></li>
+        <li><a href="#Rejected-applications">Rejected Applications</a></li>
+        <li><a href="#settings">Settings</a></li>
+      </ul>
+    </div>
+  </header>
+  
+  <div class="container">
+    <h1>Pending Bail Applications</h1>
+
+    <div class="search-filter">
+      <input type="text" placeholder="Search by applicant name...">
+      <select>
+        <option value="">Filter by status</option>
+        <option value="pending">Pending</option>
+        <option value="approved">Approved</option>
+        <option value="rejected">Rejected</option>
+      </select>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Application ID</th>
+          <th>Applicant Name</th>
+          <th>Case Number</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>123456</td>
+          <td>John Doe</td>
+          <td>Case-001</td>
+          <td><span class="badge badge-pending">Pending</span></td>
+          <td class="action-buttons">
+            <div class="tooltip">
+              <button class="button approve">Approve</button>
+              <span class="tooltiptext">Approve Application</span>
+            </div>
+            <div class="tooltip">
+              <button class="button reject">Reject</button>
+              <span class="tooltiptext">Reject Application</span>
+            </div>
+            <div class="tooltip">
+              <button class="button view">View Details</button>
+              <span class="tooltiptext">View Application Details</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>123457</td>
+          <td>Jane Smith</td>
+          <td>Case-002</td>
+          <td><span class="badge badge-pending">Pending</span></td>
+          <td class="action-buttons">
+            <div class="tooltip">
+              <button class="button approve">Approve</button>
+              <span class="tooltiptext">Approve Application</span>
+            </div>
+            <div class="tooltip">
+              <button class="button reject">Reject</button>
+              <span class="tooltiptext">Reject Application</span>
+            </div>
+            <div class="tooltip">
+              <button class="button view">View Details</button>
+              <span class="tooltiptext">View Application Details</span>
+            </div>
+          </td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+  </div>
+  
+  <footer>
+    <p>&copy; 2024 Legal Aid System. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+

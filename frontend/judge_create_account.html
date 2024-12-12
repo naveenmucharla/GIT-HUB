@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBail - Create Account (Judicial Authority)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 145px;
+            height: 125px;
+        }
+
+        h6 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 38px;
+            cursor: pointer;
+            color: #ccc;
+        }
+        .eye-icon:hover {
+            color: #555;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #3498db;
+            color: white;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        .footer .contact-info {
+            margin: 10px 0;
+        }
+
+        .footer .social-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .mandatory {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Logo -->
+        <img src="E:\Naveen\Sri Indu\SIH\Images\quick-bail-high-resolution-logo - Copy.png" alt="QuickBail Logo" class="logo">
+
+        <h6>Create Account - Judicial Authority</h6>
+
+        <form action="submit_judicial_account" method="POST">
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="judge-name">Full Name <span class="mandatory">*</span></label>
+                <input type="text" id="judge-name" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <!-- Username -->
+            <div class="form-group">
+                <label for="judge-username">Username <span class="mandatory">*</span></label>
+                <input type="text" id="judge-username" name="username" placeholder="Choose a username" required>
+            </div>
+
+            <!-- Confirm Username -->
+            <div class="form-group">
+                <label for="judge-confirm-username">Confirm Username <span class="mandatory">*</span></label>
+                <input type="text" id="judge-confirm-username" name="confirm-username" placeholder="Confirm your username" required>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group password-container">
+                <label for="judge-password">Password <span class="mandatory">*</span></label>
+                <input type="password" id="judge-password" name="password" placeholder="Choose a password" required>
+                <i class="fa fa-eye eye-icon" onclick="togglePassword()"></i>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group password-container">
+                <label for="judge-confirm-password">Confirm Password <span class="mandatory">*</span></label>
+                <input type="password" id="judge-confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                <i class="fa fa-eye eye-icon" onclick="togglePasswordConfirm()"></i>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="judge-email">Email <span class="mandatory">*</span></label>
+                <input type="email" id="judge-email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <!-- Aadhar Card Number -->
+            <div class="form-group">
+                <label for="judge-aadhar">Aadhar Card Number <span class="mandatory">*</span></label>
+                <input type="text" id="judge-aadhar" name="aadhar" placeholder="Enter your Aadhar card number" required>
+            </div>
+
+            <!-- Judicial Authority ID -->
+            <div class="form-group">
+                <label for="judge-id">Judicial Authority ID <span class="mandatory">*</span></label>
+                <input type="text" id="judge-id" name="judicial-id" placeholder="Enter your judicial ID" required>
+            </div>
+
+            <!-- Contact Number -->
+            <div class="form-group">
+                <label for="judge-contact">Contact Number <span class="mandatory">*</span></label>
+                <input type="text" id="judge-contact" name="contact" placeholder="Enter your contact number" required>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <label for="judge-address">Address <span class="mandatory">*</span></label>
+                <textarea id="judge-address" name="address" placeholder="Enter your address" required></textarea>
+            </div>
+
+            <!-- City -->
+            <div class="form-group">
+                <label for="judge-city">City <span class="mandatory">*</span></label>
+                <input type="text" id="judge-city" name="city" placeholder="Enter your city" required>
+            </div>
+
+            <!-- State -->
+            <div class="form-group">
+                <label for="judge-state">State <span class="mandatory">*</span></label>
+                <input type="text" id="judge-state" name="state" placeholder="Enter your state" required>
+            </div>
+
+            <!-- Postal Code -->
+            <div class="form-group">
+                <label for="judge-zipcode">Postal Code <span class="mandatory">*</span></label>
+                <input type="text" id="judge-zipcode" name="zipcode" placeholder="Enter your postal code" required>
+            </div>
+           <!--
+            <!-- Documents Upload 
+            <div class="form-group">
+                <label for="judge-documents">Upload Supporting Documents <span class="mandatory">*</span></label>
+                <input type="file" id="judge-documents" name="documents" required>
+            </div>-->
+
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>QuickBail - Streamlining Justice</p>
+        <div class="contact-info">
+            Contact us: <a href="mailto:info@quickbail.com">info@quickbail.com</a> | + 91 910-057-0066
+        </div>
+        <div class="social-links">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        function togglePassword() {
+            var passwordField = document.getElementById('judge-password');
+            var eyeIcon = document.querySelector('.password-container i');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+
+        function togglePasswordConfirm() {
+            var confirmPasswordField = document.getElementById('judge-confirm-password');
+            var eyeIcon = document.querySelectorAll('.password-container i')[1];
+            if (confirmPasswordField.type === 'password') {
+                confirmPasswordField.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                confirmPasswordField.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>
+

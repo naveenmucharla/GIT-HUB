@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prisoner Profile - Bail Reckoner</title>
+    <link rel="stylesheet" href="p_profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="quick-bail-logo.png" alt="QuickBail Logo" class="logo">
+            <h1>Prisoner Profile</h1>
+        </header>
+        
+        <form class="profile-form">
+            <!-- Account Information -->
+            <section>
+                <h2>Account Information</h2>
+                <label for="s_code">Code to access profile:</label>
+                <input type="text" id="s_code" name="s_code" required></textarea>Note:Enter a unique code to access your profile which includes alphabets,numbers and symbols(Note:Once created you cannot change the code
+                <br> <br>
+              
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </section>
+        
+            <!-- Personal Information -->
+            <section>
+                <h2>Personal Information</h2>
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+        
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+        
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+        
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="3" required></textarea>
+        
+                <label for="contact">Contact Number:</label>
+                <input type="tel" id="contact" name="contact" required>
+        
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </section>
+        
+            <!-- Case Information -->
+            <section>
+                <h2>Case Information</h2>
+                <label for="charges">Charges Framed (Multiple Charges):</label>
+                <textarea id="charges" name="charges" rows="4" required></textarea>
+        
+                <label for="nature">Nature of Offense:</label>
+                <select id="nature" name="nature" required>
+                    <option value="compoundable">Compoundable</option>
+                    <option value="non-compoundable">Non-Compoundable</option>
+                </select>
+        
+                <label for="statutes">Relevant Statutes:</label>
+                <textarea id="statutes" name="statutes" rows="3" placeholder="e.g., IPC, Bhartiya Nyaya Sanhita 2023" required></textarea>
+        
+                <label for="court-case">Court Case Number:</label>
+                <input type="text" id="court-case" name="court-case" required>
+        
+                <label for="court-name">Court Details (Name & Location):</label>
+                <input type="text" id="court-name" name="court-name" required>
+            </section>
+        
+            <!-- Imprisonment Details -->
+            <section>
+                <h2>Imprisonment Details</h2>
+                <label for="date-arrest">Date of Arrest:</label>
+                <input type="date" id="date-arrest" name="date-arrest" required>
+        
+                <label for="time-served">Duration of Imprisonment (Months):</label>
+                <input type="number" id="time-served" name="time-served" required>
+            </section>
+        
+            <button type="submit" class="submit-btn">Save Profile</button>
+        </form>
+        
+    </div>
+<script>
+document.querySelector('.profile-form').addEventListener('submit', async (event) => {
+  event.preventDefault(); // Prevent default form submission
+
+  const formData = {
+    s_code: document.getElementById('s_code').value,
+    username: document.getElementById('username').value,
+    name: document.getElementById('name').value,
+    dob: document.getElementById('dob').value,
+    gender: document.getElementById('gender').value,
+    address: document.getElementById('address').value,
+    contact: document.getElementById('contact').value,
+    email: document.getElementById('email').value,
+    charges: document.getElementById('charges').value,
+    nature: document.getElementById('nature').value,
+    statutes: document.getElementById('statutes').value,
+    courtCaseNumber: document.getElementById('court-case').value,
+    courtName: document.getElementById('court-name').value,
+    dateArrest: document.getElementById('date-arrest').value,
+    timeServed: document.getElementById('time-served').value,
+  };
+
+  try {
+    const response = await fetch('/api/prisoners', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await response.json();
+    if (response.ok) {
+      alert('Profile saved successfully!');
+      console.log(result);
+    } else {
+      alert(result.error || 'Error saving profile.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('An unexpected error occurred.');
+  }
+});
+
+
+
+</script>
+
+</body>
+</html> 

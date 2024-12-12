@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prisoner Profile - Bail Reckoner</title>
+    <link rel="stylesheet" href="p_profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="quick-bail-logo.png" alt="QuickBail Logo" class="logo">
+            <h1>Prisoner Profile Search</h1>
+        </header>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <label for="secretCode">Enter your case number:</label>
+            <input type="text" id="secretCode" placeholder="Enter your case number">
+            <button onclick="searchProfile()">Search Profile</button>
+        </div>
+        <div>
+            <a href="p_profile.html" class="tab">Update Profile</a>
+        </div>
+
+        <!-- Profile Data will be dynamically inserted here -->
+        <div id="profile-details"></div>
+
+        <!-- Confirm Save Section -->
+        <div id="confirm-section" style="display: none;">
+            <button id="confirm-button">Confirm and Save</button>
+        </div>
+
+        <script>
+            let profileData = null; // Variable to hold profile data
+
+            // Function to handle the profile search
+            function searchProfile() {
+                const secretCode = document.getElementById('secretCode').value.trim();
+
+                if (!secretCode) {
+                    alert("Please enter the secret code.");
+                    return;
+                }
+
+                const profileContainer = document.getElementById('profile-details');
+                profileContainer.innerHTML = "";  // Clear previous content
+                profileContainer.innerHTML = "<p>Loading profile details...</p>";  // Show loading message
+
+                // Fetch profile data from the backend API
+                fetch(`http://localhost:3000/api/prisoner-profile/${secretCode}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Error: ${response.statusText}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data && data.s_code) {
+                            profileData = data; // Store the profile data
+                            profileContainer.innerHTML = `
+                                <h2>Account Information</h2>
+                                <p><strong>Case Number:</strong> ${data.s_code}</p>
+                                <p><strong>Username:</strong> ${data.username}</p>
+
+                                <h2>Personal Information</h2>
+                                <p><strong>Name:</strong> ${data.name}</p>
+                                <p><strong>Date of Birth:</strong> ${new Date(data.dob).toLocaleDateString()}</p>
+                                <p><strong>Gender:</strong> ${data.gender}</p>
+                                <p><strong>Address:</strong> ${data.address}</p>
+                                <p><strong>Contact:</strong> ${data.contact}</p>
+                                <p><strong>Email:</strong> ${data.email}</p>
+
+                                <h2>Case Information</h2>
+                                <p><strong>Charges:</strong> ${data.charges}</p>
+                                <p><strong>Nature of Offense:</strong> ${data.nature}</p>
+                                <p><strong>Statutes:</strong> ${data.statutes}</p>
+                                <p><strong>Court Case Number:</strong> ${data.courtCaseNumber}</p>
+                                <p><strong>Court Name:</strong> ${data.courtName}</p>
+
+                                <h2>Imprisonment Details</h2>
+                                <p><strong>Date of Arrest:</strong> ${new Date(data.dateArrest).toLocaleDateString()}</p>
+                                <p><strong>Time Served (in months):</strong> ${data.timeServed}</p>
+                            `;
+
+                            // Show confirm button
+                            document.getElementById('confirm-section').style.display = 'block';
+                        } else {
+                            profileContainer.innerHTML = `<p>Profile not found. Please check the secret code.</p>`;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching profile:', error);
+                        profileContainer.innerHTML = `<p>An error occurred while fetching the profile: ${error.message}</p>`;
+                    });
+            }
+
+            // Function to handle the confirm and save action
+            document.getElementById('confirm-button').addEventListener('click', () => {
+                if (profileData) {
+                    // Send the data to the backend to save it
+                    fetch('http://localhost:3000/api/save-profile', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(profileData)
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error saving profile');
+                        }
+                        return response.json();
+                    })
+                    .then(responseData => {
+                        alert('Profile saved successfully!');
+                        // Optionally, redirect to the user's dashboard or show a confirmation message
+                    })
+                    .catch(error => {
+                        console.error('Error saving profile:', error);
+                        alert('An error occurred while saving the profile.');
+                    });
+                } else {
+                    alert('No profile data to save.');
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>

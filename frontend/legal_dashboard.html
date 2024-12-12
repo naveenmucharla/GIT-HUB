@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bail Reckoner - Legal Aid Provider Dashboard</title>
+    <link rel="stylesheet" href="legal_aid_dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        // Function to display logout confirmation modal
+        function confirmLogout() {
+            document.getElementById('logout-modal').style.display = 'flex';
+        }
+
+        // Function to logout (redirect or clear session, etc.)
+        function logout() {
+            // Redirect to login page or clear session
+            window.location.href = 'home.html'; // Example
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById('logout-modal').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Navigation Tabs (Placed at the top) -->
+    <div class="navbar">
+        <div class="tabs">
+            <a href="legal_dashboard.html" class="tab active">Legal Aid Dashboard</a>
+            <a href="bail_application.html" class="tab">Bail Applications</a>
+            <a href="legal_documents.html" class="tab">Legal Documents</a>
+            <a href="court_schedules.html" class="tab">Court Schedules</a>
+            <a href="ipc.html" class="tab">Bharatiya Nyaya Sanhita </a>
+        </div>
+    </div>
+
+    <!-- User Profile and Logout at the top-right corner -->
+    <div class="user-options">
+        <a href="legal_profile.html" class="profile-link"><i class="fas fa-user"></i> Profile</a>
+        <a href="javascript:void(0)" onclick="confirmLogout()" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+
+    <div class="container">
+        <!-- Logo -->
+        <img src="E:\Naveen\Sri Indu\SIH\Images\quick-bail-high-resolution-logo - Copy.png" alt="QuickBail Logo" class="logo">
+
+        <h1>Bail Reckoner</h1>
+        <p class="quote">"Justice delayed is freedom denied."</p>
+
+        <!-- Dashboard Content -->
+        <h2>Legal Aid Provider Dashboard</h2>
+
+        <div class="info">
+            <p><strong>Assigned Cases:</strong> 12 active cases are being handled.</p>
+            <p><strong>Upcoming Hearings:</strong> 3 hearings are scheduled this week.</p>
+            <p><strong>Pending Bail Applications:</strong> Review and approve 4 pending applications.</p>
+        </div>
+
+        <h3>Key Actions:</h3>
+        <ul>
+            <li>Prepare and submit bail applications for undertrial prisoners.</li>
+            <li>Access detailed legal references and statutes.</li>
+            <li>Coordinate with clients and other legal aid providers.</li>
+            <li>Track court schedules and manage appointments.</li>
+        </ul>
+    </div>
+
+    <!-- Logout Modal -->
+    <div id="logout-modal" class="logout-modal">
+        <div class="modal-content">
+            <h3>Are you sure you want to logout?</h3>
+            <button class="yes-btn" onclick="logout()">Yes</button>
+            <button class="no-btn" onclick="closeModal()">No</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>QuickBail - Streamlining Legal Aid Services</p>
+        <div class="contact-info">
+            Contact us: <a href="mailto:info@quickbail.com">info@quickbail.com</a> | +91 910-057-0066
+        </div>
+        <div class="social-links">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1e2a3a; /* Darker color for navbar */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .tabs {
+    display: flex;
+}
+
+.navbar .tabs a {
+    color: white;
+    text-decoration: none; /* Remove underline */
+    margin: 0 20px;
+    font-size: 18px; /* Matching size */
+    font-weight: 500; /* Similar weight for a balanced look */
+    transition: color 0.3s ease;
+}
+
+.navbar .tabs .active {
+    font-weight: bold;
+    border-bottom: 3px solid #f39c12; /* Accent color for active tab */
+    padding-bottom: 5px;
+}
+
+.navbar .tabs a:hover {
+    color: #f39c12; /* Hover effect with accent color */
+}
+
+.navbar .user-options a {
+    color: white;
+    margin-left: 15px;
+    font-size: 18px; /* Consistent size */
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar .user-options a:hover {
+    color: #f39c12; /* Hover effect with accent color */
+}
+
+/* Dashboard Layout */
+.dashboard {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dashboard header h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+.dashboard header p {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Search and Filter */
+.search-filter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-filter input,
+.search-filter select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-filter button {
+    padding: 10px 20px;
+    background-color: #1e2a3a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-filter button:hover {
+    background-color: #f39c12;
+}
+
+/* Court Schedule Table */
+.court-schedule-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.court-schedule-table th, .court-schedule-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.court-schedule-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.court-schedule-table td button {
+    padding: 5px 10px;
+    background-color: #1e2a3a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.court-schedule-table td button:hover {
+    background-color: #f39c12;
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    width: 400px;
+    border-radius: 4px;
+}
+
+.modal .close-btn {
+    font-size: 20px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.modal .close-btn:hover {
+    color: black;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal label {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.modal input,
+.modal select {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.modal button {
+    padding: 10px;
+    background-color: #1e2a3a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal button:hover {
+    background-color: #f39c12;
+}

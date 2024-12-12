@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bail Reckoner - Bail Applications</title>
+    <link rel="stylesheet" href="bail_application.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        // Sample Notification Data
+        const notifications = [
+            { id: 1, title: "Bail Application Received", prisoner: "Prisoner A", status: "Pending Review" },
+            { id: 2, title: "Hearing Reminder", prisoner: "Prisoner B", status: "Scheduled for 5th Dec" },
+        ];
+
+        // Toggle notification panel
+        function toggleNotifications() {
+            const notificationPanel = document.querySelector('.notifications');
+            notificationPanel.style.display = notificationPanel.style.display === 'block' ? 'none' : 'block';
+            const notificationList = document.querySelector('.notification-list');
+            notificationList.innerHTML = '';
+            notifications.forEach((item) => {
+                const notificationItem = document.createElement('li');
+                notificationItem.innerHTML = `
+                    <div>
+                        <strong>${item.title}</strong> - ${item.prisoner}<br>
+                        <span>Status: ${item.status}</span>
+                    </div>
+                `;
+                notificationList.appendChild(notificationItem);
+            });
+        }
+
+    
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="navbar">
+        <h1 class="brand">Bail Reckoner</h1>
+         <!-- Navigation Tabs (Placed at the top) -->
+    <div class="navbar">
+        <div class="tabs">
+            <a href="legal_dashboard.html" class="tab">Legal Aid Dashboard</a>
+            <a href="bail_application.html" class="tab active">Bail Applications</a>
+            <a href="legal_documents.html" class="tab">Legal Documents</a>
+            <a href="court_schedules.html" class="tab">Court Schedules</a>
+            <a href="ipc.html" class="tab">Bharatiya Nyaya Sanhita </a>
+        </div>
+    </div>
+        <div class="user-options">
+            <a href="legal_profile.html" class="profile-link"><i class="fas fa-user-circle"></i></a>
+            <i class="fas fa-bell" onclick="toggleNotifications()"></i>
+
+        </div>
+    </div>
+
+    <!-- Notifications Panel -->
+    <div class="notifications">
+        <h3>Notifications</h3>
+        <ul class="notification-list"></ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <h2>Bail Applications</h2>
+        <div class="application-cards">
+            <!-- Bail Application Card -->
+            <div class="card">
+                <h3>Prisoner Name: John Doe</h3>
+                <p><strong>Offense:</strong> Theft under IPC 378</p>
+                <p><strong>Imprisonment Duration:</strong> 3 months</p>
+                <p><strong>Bail Status:</strong> Pending</p>
+                <button class="action-btn approve">Approve</button>
+                <button class="action-btn reject">Reject</button>
+            </div>
+            <div class="card">
+                <h3>Prisoner Name: Jane Smith</h3>
+                <p><strong>Offense:</strong> Cybercrime under IT Act</p>
+                <p><strong>Imprisonment Duration:</strong> 2 months</p>
+                <p><strong>Bail Status:</strong> Pending</p>
+                <button class="action-btn approve">Approve</button>
+                <button class="action-btn reject">Reject</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Bail Reckoner - Streamlining Legal Aid Services</p>
+        <div class="social-icons">
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-linkedin"></i>
+        </div>
+    </footer>
+</body>
+</html>

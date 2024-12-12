@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBail - Apply for Bail</title>
+    <link rel="stylesheet" href="applyforbail.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Logo -->
+        <img src="E:\Naveen\Sri Indu\SIH\Images\quick-bail-high-resolution-logo - Copy.png" alt="QuickBail Logo" class="logo">
+        <h1>QuickBail - Apply for Bail</h1>
+
+        <h2>Apply for Bail</h2>
+
+        <form action="submit_bail_application" method="POST">
+            <div class="info">
+                <label for="case_id">Case ID:</label>
+                <input type="text" id="case_id" name="case_id" required><br>
+
+                <label for="crime_type">Crime Type:</label>
+                <select id="crime_type" name="crime_type" required>
+                    <option value="theft">Theft</option>
+                    <option value="assault">Assault</option>
+                    <option value="fraud">Fraud</option>
+                    <option value="homicide">Homicide</option>
+                </select><br>
+
+                <label for="duration_served">Duration Served (in months):</label><br>
+                <input type="number" id="duration_served" name="duration_served" required><br>
+
+                <label for="bail_reason">Reason for Bail:</label><br>
+                <textarea id="bail_reason" name="bail_reason" rows="4" required></textarea><br>
+                <label for="lawyer">Choose a Lawyer:</label>
+            <select id="lawyer" name="lawyer">
+                <!-- Lawyers will be populated here dynamically -->
+            </select>
+            </div>
+
+            <button type="submit" class="btn">Submit Bail Application</button>
+        </form>
+    </div>
+
+</body>
+</html>

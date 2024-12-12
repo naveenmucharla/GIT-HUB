@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Search - Bail Reckoner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #ecf0f1;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .case-details {
+            margin-top: 30px;
+        }
+
+        .case-details h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .case-details p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search Case Details</h1>
+        <form id="caseSearchForm">
+            <label for="caseNumber">Enter Case Number:</label>
+            <input type="text" id="caseNumber" name="caseNumber" placeholder="Enter case number" required>
+            <button type="submit">Search Case</button>
+        </form>
+
+        <!-- Display case details here -->
+        <div class="case-details" id="caseDetails">
+            <!-- Case details will be dynamically inserted here -->
+        </div>
+        <p class="error" id="errorMessage"></p>
+        <a href="bailsteps.html" class="btn">Confirm</a>
+    </div>
+
+    <script>
+        document.getElementById("caseSearchForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const caseNumber = document.getElementById("caseNumber").value.trim();
+            const caseDetailsDiv = document.getElementById("caseDetails");
+            const errorMessage = document.getElementById("errorMessage");
+
+            // Clear previous results
+            caseDetailsDiv.innerHTML = "";
+            errorMessage.textContent = "";
+
+            try {
+                const response = await fetch(`/api/case/${caseNumber}`);
+                const result = await response.json();
+
+                if (result.success) {
+                    // Display case details
+                    const data = result.data;
+                    caseDetailsDiv.innerHTML = `
+                        <p><strong>Case Number:</strong> ${data.caseNumber}</p>
+                        <p><strong>Offender Name:</strong> ${data.offenderName}</p>
+                        <p><strong>Offense:</strong> ${data.offense}</p>
+                        <p><strong>Duration Served:</strong> ${data.durationServed}</p>
+                        <p><strong>Arrest Date:</strong> ${new Date(data.arrestDate).toDateString()}</p>
+                        <p><strong>Judicial Pronouncements:</strong> ${data.judicialPronouncements || "N/A"}</p>
+                        <p><strong>Remarks:</strong> ${data.remarks || "N/A"}</p>
+                    `;
+                } else {
+                    // Display error message
+                    errorMessage.textContent = result.message || "Case not found.";
+                }
+            } catch (error) {
+                console.error("Error fetching case details:", error);
+                errorMessage.textContent = "An error occurred while fetching case details.";
+            }
+        });
+    </script>
+</body>
+</html>

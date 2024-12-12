@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Aid Provider Dashboard</title>
+    <link rel="stylesheet" href="legal_profile.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .dashboard-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .profile-card {
+            margin-top: 20px;
+        }
+
+        .profile-item {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .update-profile button {
+            width: auto;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .update-profile button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Legal Aid Provider Dashboard</h1>
+
+        <!-- Profile card with updated name -->
+        <div id="profile-card" class="profile-card">
+            <h2>Profile Details</h2>
+            <div class="profile-item">
+                <strong>Name:</strong> <span>Adv. Neha Sharma</span>
+            </div>
+            <div class="profile-item">
+                <strong>Email:</strong> <span>neha.sharma@example.com</span>
+            </div>
+            <div class="profile-item">
+                <strong>Contact Number:</strong> <span>+91 9123456789</span>
+            </div>
+            <div class="profile-item">
+                <strong>License Number:</strong> <span>LIC789012</span>
+            </div>
+            <div class="profile-item">
+                <strong>Specialization:</strong> <span>Family Law</span>
+            </div>
+            <div class="update-profile">
+                <button onclick="window.location.href='l_profile.html'">Update Your Profile</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

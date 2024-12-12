@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Court Schedules for Legal Aid Providers</title>
+    <link rel="stylesheet" href="court_schedules.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="brand">Bail Reckoner</div>
+        <div class="tabs">
+            <a href="legal_dashboard.html" class="tab">Legal Aid Dashboard</a>
+            <a href="bail_application.html" class="tab">Bail Applications</a>
+            <a href="legal_documents.html" class="tab">Legal Documents</a>
+            <a href="court_schedules.html" class="tab active">Court Schedules</a>
+            <a href="ipc.html" class="tab">Bharatiya Nyaya Sanhitha</a>
+        </div>
+        <div class="user-options">
+            <a href="legal_profile.html" class="profile-link"><i class="fas fa-user"></i> Profile</a>
+        </div>
+    </div>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard">
+        <header>
+            <h1>Court Schedules</h1>
+            <p>Manage and track the court schedules for undertrial prisoners</p>
+        </header>
+
+        <!-- Search Bar and Filter -->
+        <div class="search-filter">
+            <input type="text" placeholder="Search by Prisoner Name, Case Number..." id="search">
+            <select id="filter">
+                <option value="all">All Cases</option>
+                <option value="upcoming">Upcoming Hearings</option>
+                <option value="completed">Completed Hearings</option>
+            </select>
+            <button onclick="filterSchedules()">Filter</button>
+        </div>
+
+        <!-- Court Schedule Table -->
+        <div class="court-schedule-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Case Number</th>
+                        <th>Prisoner Name</th>
+                        <th>Hearing Date</th>
+                        <th>Hearing Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="schedule-list">
+                    <!-- Dynamically populated data will go here -->
+                    <tr>
+                        <td>12345</td>
+                        <td>John Doe</td>
+                        <td>2024-12-05</td>
+                        <td>Upcoming</td>
+                        <td>
+                            <button onclick="updateSchedule('12345')">Update</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>12346</td>
+                        <td>Jane Smith</td>
+                        <td>2024-12-10</td>
+                        <td>Completed</td>
+                        <td>
+                            <button onclick="updateSchedule('12346')">Update</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Update Court Schedule Modal -->
+        <div id="update-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">×</span>
+                <h3>Update Case Details</h3>
+                <form id="update-form">
+                    <label for="case-number">Case Number:</label>
+                    <input type="text" id="case-number" name="case-number" disabled><br>
+
+                    <label for="hearing-date">Hearing Date:</label>
+                    <input type="date" id="hearing-date" name="hearing-date"><br>
+
+                    <label for="hearing-status">Hearing Status:</label>
+                    <select id="hearing-status" name="hearing-status">
+                        <option value="upcoming">Upcoming</option>
+                        <option value="completed">Completed</option>
+                        <option value="rescheduled">Rescheduled</option>
+                    </select><br>
+
+                    <button type="submit" onclick="saveSchedule()">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="court_schedules.js"></script>
+</body>
+</html>

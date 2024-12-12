@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surety Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Surety Information Form</h1>
+    <form>
+        <!-- Personal Information -->
+        <h2>Personal Information</h2>
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+
+        <label for="contactDetails">Contact Details:</label>
+        <input type="text" id="contactDetails" name="contactDetails" placeholder="Phone or Email" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="relationship">Relationship to the Accused:</label>
+        <input type="text" id="relationship" name="relationship" required>
+
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" name="occupation">
+
+        <!-- Financial Status -->
+        <h2>Financial Status</h2>
+        <label for="incomeProof">Proof of Income:</label>
+        <input type="file" id="incomeProof" name="incomeProof">
+
+        <label for="financialCapacity">Details of Financial Capacity:</label>
+        <textarea id="financialCapacity" name="financialCapacity" rows="4" placeholder="Provide details of your financial ability to act as a surety"></textarea>
+
+        <!-- Legal and Background Information -->
+        <h2>Legal and Background Information</h2>
+        <label for="idProof">Government-Issued ID Proof:</label>
+        <input type="file" id="idProof" name="idProof" required>
+
+        <label for="addressProof">Proof of Address:</label>
+        <input type="file" id="addressProof" name="addressProof" required>
+
+        <label for="criminalRecord">Do you have a clean criminal record?</label>
+        <select id="criminalRecord" name="criminalRecord" required>
+            <option value="">Select</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <label for="previousSurety">Have you acted as a surety before?</label>
+        <select id="previousSurety" name="previousSurety">
+            <option value="">Select</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <!-- Declaration and Consent -->
+        <h2>Declaration and Consent</h2>
+        <label for="declaration">I agree to act as a surety and understand my responsibilities:</label>
+        <input type="checkbox" id="declaration" name="declaration" required> Yes, I agree.
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petition for Bail Form</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #ecf0f1;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+        }
+
+        .declaration-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .declaration-box input {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #3498db;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Petition for Bail Form</h1>
+        <form method="POST" action="/submit-petition" enctype="multipart/form-data">
+            <!-- Section 1: Personal Information -->
+            <h2>Personal Information</h2>
+            <label for="fullName">Full Name of the Petitioner:</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label for="caseNumber">Case Number:</label>
+            <input type="text" id="caseNumber" name="caseNumber" required>
+
+            <label for="courtName">Court Name:</label>
+            <input type="text" id="courtName" name="courtName" required>
+
+            <label for="contactDetails">Contact Details (Phone/Email):</label>
+            <input type="text" id="contactDetails" name="contactDetails" required>
+
+            <!-- Section 2: Grounds for Bail -->
+            <h2>Grounds for Bail</h2>
+            <label for="bailReasons">Provide Reasons for Bail:</label>
+            <textarea id="bailReasons" name="bailReasons" placeholder="Explain why bail is being sought (e.g., health issues, family obligations, etc.)" required></textarea>
+
+            <label for="bailAmount">Proposed Bail Amount:</label>
+            <input type="number" id="bailAmount" name="bailAmount" placeholder="Enter the proposed bail amount">
+
+            <label for="duration">Proposed Duration of Imprisonment:</label>
+            <input type="number" id="duration" name="duration" placeholder="Enter the duration of imprisonment">
+
+            <!-- Section 3: Supporting Documents -->
+            <h2>Supporting Documents</h2>
+            <label for="firCopy">Upload FIR/Complaint Copy:</label>
+            <input type="file" id="firCopy" name="firCopy" required>
+
+            <label for="chargeSheet">Upload Charge Sheet (if available):</label>
+            <input type="file" id="chargeSheet" name="chargeSheet">
+
+            <label for="medicalRecords">Upload Medical Records (if applicable):</label>
+            <input type="file" id="medicalRecords" name="medicalRecords">
+
+            <label for="identityProof">Upload Identity Proof:</label>
+            <input type="file" id="identityProof" name="identityProof" required>
+
+            <label for="previousBail">Upload Previous Bail Records (if any):</label>
+            <input type="file" id="previousBail" name="previousBail">
+
+            <!-- Section 4: Declaration -->
+            <h2>Declaration</h2>
+            <div class="declaration-box">
+                <input type="checkbox" id="declaration" name="declaration" required>
+                <label for="declaration">I declare that all the information provided is accurate and I understand the conditions for the bail petition.</label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn">Submit Petition</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Quick Bail System | <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+    </footer>
+
+    <script>
+// Handle form submission
+
+document.getElementById('petitionForm').addEventListener('submit', function(event) {
+  event.preventDefault();  // Prevent the default form submission
+
+  const formData = new FormData(this);  // Create a FormData object from the form
+
+  fetch('/submit-petition', {
+    method: 'POST',
+    body: formData  // Send form data as the request body
+  })
+    .then(response => response.json())  // Parse the response as JSON
+    .then(data => {
+      if (data.success) {
+        // Redirect to the case details page upon successful submission
+        window.location.href = data.redirectUrl;  // This will navigate to /case_details.html
+      } else {
+        alert('Error: ' + (data.message || 'Failed to submit petition'));
+      }
+    })
+    .catch(error => {
+      console.error('Error submitting petition:', error);
+      alert('An error occurred while submitting the petition.');
+    });
+});
+
+// Select your form element
+const petitionForm = document.getElementById('petitionForm');
+
+// Add event listener for form submission
+petitionForm.addEventListener('submit', function (event) {
+  event.preventDefault();  // Prevent default form submission
+
+  // Create a new FormData object from the form
+  const formData = new FormData(petitionForm);
+
+  // Use fetch to send form data asynchronously
+  fetch('/submit-petition', {
+    method: 'POST',
+    body: formData  // Pass the form data
+  })
+    .then(response => response.json())  // Parse the JSON response
+    .then(data => {
+      if (data.success) {
+        // Redirect the user to the case details page
+        window.location.href = data.redirectUrl;  // /case_details.html
+      } else {
+        // If something went wrong, show an error message
+        alert('Error: ' + (data.message || 'Failed to submit petition'));
+      }
+    })
+    .catch(error => {
+      // Handle network or other errors
+      console.error('Error submitting petition:', error);
+      alert('An error occurred while submitting the petition.');
+    });
+});
+
+
+    </script>
+</body>
+</html>

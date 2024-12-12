@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBail - Judiciary Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 145px;
+            height: 125px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            padding: 12px 25px;
+            cursor: pointer;
+            color: white;
+            background-color: #3498db;
+            border-radius: 20px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .tab:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .tab.active {
+            background-color: #2980b9;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            padding: 15px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+
+        ul li:hover {
+            transform: scale(1.02);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #3498db;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer .contact-info {
+            margin: 10px 0;
+        }
+
+        .footer .social-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Logo -->
+        <img src="E:\Naveen\Sri Indu\SIH\Images\quick-bail-high-resolution-logo - Copy.png" alt="QuickBail Logo" class="logo">
+
+        <h1>QuickBail</h1>
+        <p class="quote">"Justice delayed is freedom denied."</p>
+
+        <!-- Navigation Tabs -->
+        <div class="tabs">
+            <div class="tab">Case Assignments</div>
+            <div class="tab">Review Bail Requests</div>
+            <div class="tab active">Judicial Decisions</div>
+            <div class="tab">Legal Precedents</div>
+            <div class="tab">Court Schedules</div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <h2>Judiciary Dashboard</h2>
+
+        <div class="info">
+           <a href="pending_app.html"class="button" >Bail Applications: 8 applications awaiting review</a>
+            <p><strong>Upcoming Hearings:</strong> 5 cases scheduled this week.</p>
+            <p><strong>Judicial Pronouncements:</strong> 2 cases require additional legal input.</p>
+        </div>
+
+        <h3>Available Features:</h3>
+        <ul>
+            <li>Review and approve/reject bail requests with detailed case histories.</li>
+            <li>Access consolidated legal references and statutes for decision-making.</li>
+            <li>Evaluate judicial discretion factors such as flight risk and evidence integrity.</li>
+            <li>Review imprisonment duration and compliance with bail eligibility rules.</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>QuickBail - Streamlining Judicial Efficiency</p>
+        <div class="contact-info">
+            Contact us: <a href="mailto:info@quickbail.com">info@quickbail.com</a> | +91 910-057-0066
+        </div>
+        <div class="social-links">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+</body>
+</html>

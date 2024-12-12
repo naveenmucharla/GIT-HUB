@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Documents for Bail Application</title>
+    <link rel="stylesheet" href="legal_documents.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="brand">Bail Reckoner</div>
+        <div class="tabs">
+            <a href="legal_dashboard.html" class="tab">Dashboard</a>
+            <a href="bail_application.html" class="tab">Bail Application</a>
+            <a href="legal_documents.html" class="tab active">Legal Documents</a>
+            <a href="court_schedules.html" class="tab">Court Schedules</a>
+            <a href="ipc.html" class="tab">Bharatiya Nyaya Sanhita </a>
+        </div>
+        <div class="user-options">
+            <a href="legal_profile.html" class="profile-link"><i class="fa fa-user"></i> Profile</a>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <h2>Legal Documents for Bail Application</h2>
+        <p>Access the required documents and bonds to apply for bail on behalf of undertrial prisoners. Ensure all relevant documents are submitted for an accurate application.</p>
+
+        <!-- Documents List -->
+        <div class="documents">
+            <div class="document-card">
+                <h3>Petition Form</h3>
+                <p>Fill out the petition form for bail application submission.</p>
+                <a href="petition_form.html" class="action-btn approve">Open Petition Form</a>
+            </div>
+
+            <div class="document-card">
+                <h3>Bail Application Form</h3>
+                <p>The official bail application form to be filled for applying for bail.</p>
+                <a href="bail_application_form.html" class="action-btn approve">Open Bail Application Form</a>
+            </div>
+
+            <div class="document-card">
+                <h3>Affidavit for Bail</h3>
+                <p>Complete the affidavit for bail submission.</p>
+                <a href="affidavit_for_bail.html" class="action-btn approve">Open Affidavit for Bail</a>
+            </div>
+
+            <div class="document-card">
+                <h3>Surety Bond</h3>
+                <p>The document to be submitted by the surety for guaranteeing the bail.</p>
+                <a href="surety_bond.html" class="action-btn approve">Open Surety Bond</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Bail Reckoner. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fa fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Function to open the relevant document (PDF)
+        function openDocument(doc) {
+            window.open(doc, '_blank');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBail - Undertrial Prisoner Dashboard</title>
+    <link rel="stylesheet" href="prisoner_dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Logout Modal Styling */
+        .logout-modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        }
+
+        .modal-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .modal-content button:hover {
+            background: #0056b3;
+        }
+    </style>
+    <script>
+        // Reload page function
+        function reloadPage(event) {
+            event.preventDefault();
+            location.reload();
+        }
+
+        // Show the Logout Modal
+        function confirmLogout() {
+            const modal = document.getElementById("logout-modal");
+            modal.style.display = "block";
+        }
+
+        // Close the Logout Modal
+        function closeLogoutModal() {
+            const modal = document.getElementById("logout-modal");
+            modal.style.display = "none";
+        }
+
+        // Proceed with Logout
+        function proceedLogout() {
+            // Redirect to the login page (or handle logout functionality)
+            window.location.href = "home.html"; // Change this to your login page URL
+        }
+
+        // Bail Eligibility Function
+        document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('bailForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        
+        // Fetch input values
+        const imprisonmentDuration = parseInt(document.getElementById('imprisonment_duration').value);
+        const judgeDiscretion = document.getElementById('judge_discretion').value;
+        const proceduralRequirements = document.getElementById('procedural_requirements').value;
+        const halfTermServed = document.getElementById('half_term_served').value;
+        const severity = document.getElementById('severity').value;
+        const pastRecord = document.getElementById('past_record').value;
+        const flightRisk = document.getElementById('flight_risk').value;
+        const communityTies = document.getElementById('community_ties').value;
+        const specialConsiderations = document.getElementById('age_gender').value;
+
+        let eligibilityPercentage = 0;
+        let reasons = [];
+
+        // Calculate eligibility percentage
+        if (imprisonmentDuration >= 6) eligibilityPercentage += 10;
+        else reasons.push("Imprisonment duration is insufficient.");
+        
+        if (judgeDiscretion === 'low_risk') eligibilityPercentage += 10;
+        else reasons.push("Judge's discretion is not low risk.");
+        
+        if (proceduralRequirements === 'complied') eligibilityPercentage += 10;
+        else reasons.push("Procedural requirements are not complied with.");
+        
+        if (halfTermServed === 'yes') eligibilityPercentage += 10;
+        else reasons.push("Half term has not been served.");
+        
+        if (severity === 'low') eligibilityPercentage += 10;
+        else reasons.push("Crime severity is not low.");
+        
+        if (pastRecord === 'no') eligibilityPercentage += 10;
+        else reasons.push("There is a past criminal record.");
+        
+        if (flightRisk === 'low') eligibilityPercentage += 10;
+        else reasons.push("Risk of flight is not low.");
+        
+        if (communityTies === 'strong') eligibilityPercentage += 10;
+        else reasons.push("Community ties are weak.");
+        
+        if (specialConsiderations === 'yes') eligibilityPercentage += 10;
+        else reasons.push("No special considerations apply.");
+
+        // Create result message
+        let resultMessage = '';
+        if (eligibilityPercentage === 100) {
+            resultMessage = "Eligible for bail with 100% eligibility. All conditions are satisfied.";
+        } else {
+            resultMessage = `Not eligible for bail. Eligibility: ${eligibilityPercentage}%\nReasons:\n- ${reasons.join("\n- ")}`;
+        }
+
+        // Display the result
+        document.getElementById('resultMessage').textContent = resultMessage;
+        document.getElementById('result').style.display = 'block';
+    });
+});
+
+
+        
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+           <!-- <img src="E:/Naveen/Sri Indu/SIH/Images/quick-bail-high-resolution-logo - Copy.png" alt="Bail Reckoner Logo" class="logo">-->
+            <div class="header-text">
+                <h1>Bail Reckoner</h1>
+                <p class="quote">"Justice delayed is freedom denied."</p>
+            </div>
+            <div class="user-options">
+                <a href="prisoner_profile.html" class="profile-link"><i class="fas fa-user"></i> Profile</a>
+                <a href="javascript:void(0)" onclick="confirmLogout()" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+        <a href="#" class="tab active" onclick="reloadPage(event)">Dashboard</a>
+        <a href="legal_resources.html" class="tab">Legal Resources</a>
+        <a href="bailsteps.html" class="tab">Apply for Bail</a>
+        <a href="prisoner_trackcasestatus.html" class="tab">Track Status</a>
+        <a href="ipc.html" class="tab">Bharatiya Nyaya Sanhitha</a>
+    </div>
+    
+<!-- Welcome Message -->
+<div class="welcome-message">
+    <h2>Welcome to Prisoner's Dashboard</h2>
+    <p>Your one-stop platform for checking bail eligibility, accessing legal resources, and managing your case details.</p>
+</div>
+
+
+
+    <div class="container">
+        <!-- Left Container -->
+        <div class="left">
+          <h2>Check Bail Eligibility</h2>
+          <form id="bailForm">
+            <div class="form-group">
+              <label for="offense">Nature of the Offense:</label>
+              <select id="offense" name="offense" required>
+                <option value="cyber_crime">Cyber Crime</option>
+                <option value="crime_against_women">Crime Against Women</option>
+                <option value="crime_against_children">Crime Against Children</option>
+                <option value="offense_against_state">Offense Against the State</option>
+                <option value="economic_offense">Economic Offense</option>
+                <option value="crime_against_foreigners">Crime Against Foreigners</option>
+                <option value="sc_st">Crime Against SCs and STs</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+    
+            <div class="form-group">
+              <label for="imprisonment_duration">Duration of Imprisonment (in months):</label>
+              <input type="number" id="imprisonment_duration" name="imprisonment_duration" required>
+            </div>
+    
+            <div class="form-group">
+              <label for="judge_discretion">Judge’s Discretion:</label>
+              <select id="judge_discretion" name="judge_discretion" required>
+                <option value="low_risk">Low Risk</option>
+                <option value="medium_risk">Medium Risk</option>
+                <option value="high_risk">High Risk</option>
+              </select>
+            </div>
+    
+            <div class="form-group">
+              <label for="procedural_requirements">Procedural Requirements:</label>
+              <select id="procedural_requirements" name="procedural_requirements" required>
+                <option value="complied">Complied</option>
+                <option value="not_complied">Not Complied</option>
+              </select>
+            </div>
+    
+            <div class="form-group">
+              <label for="half_term_served">Half Term Served:</label>
+              <select id="half_term_served" name="half_term_served" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="severity">Severity of the Crime:</label>
+              <select id="severity" name="severity" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="past_record">Past Criminal Record:</label>
+              <select id="past_record" name="past_record" required>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="flight_risk">Risk of Flight:</label>
+              <select id="flight_risk" name="flight_risk" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="community_ties">Community Ties:</label>
+              <select id="community_ties" name="community_ties" required>
+                <option value="strong">Strong</option>
+                <option value="weak">Weak</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="age_gender">Special Considerations (e.g., Minor, Woman, Medical):</label>
+              <select id="age_gender" name="age_gender" required>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+            </div>
+    
+            <div class="form-group">
+              <input type="submit" value="Check Eligibility">
+            </div>
+          </form>
+    
+          <div class="result" id="result" style="display: none;">
+            <p id="resultMessage"></p>
+          </div>
+        </div>
+    
+
+      <div class="right">
+        <div class="additional-info">
+          <h2>Guidelines for Filling Bail Eligibility Checker</h2>
+          <ul>
+            <li><strong>Nature of the Offense:</strong> Select the category that best describes the crime. This helps determine the severity and bail conditions.</li>
+            <li><strong>Duration of Imprisonment:</strong> Enter the total time the accused has been or will be imprisoned. This is crucial for calculating eligibility.</li>
+            <li><strong>Judge’s Discretion:</strong> Choose the risk level as assessed by the judge. This affects the likelihood of bail being granted.</li>
+            <li><strong>Severity of the Crime:</strong> Indicate whether the crime is low, medium, or high severity. This impacts bail decisions.</li>
+            <li><strong>Past Criminal Record:</strong> Specify if the accused has any prior criminal record. A clean record might improve bail chances.</li>
+            <li><strong>Procedural Requirements:</strong> Confirm if all legal procedures have been followed. Compliance is essential for bail eligibility.</li>
+            <li><strong>Risk of Flight:</strong> Assess the likelihood of the accused fleeing before the trial. A lower risk increases bail eligibility.</li>
+            <li><strong>Community Ties:</strong> Indicate the strength of the accused's connections to the community. Strong ties can favor bail.</li>
+            <li><strong>Half Term Served:</strong> Confirm if half of the sentence has been served. Serving a substantial part of the term may enhance eligibility.</li>
+            <li><strong>Special Considerations:</strong> Note if there are any special conditions like age, gender, or medical issues that might influence bail decisions.</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>QuickBail - Streamlining Justice for Undertrial Prisoners</p>
+        <div class="contact-info">
+            Contact us: <a href="mailto:info@quickbail.com">info@quickbail.com</a> | +91 910-057-0066
+        </div>
+        <div class="social-links">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+    <!-- Logout Modal -->
+    <div id="logout-modal" class="logout-modal">
+        <div class="modal-content">
+            <h3>Are you sure you want to logout?</h3>
+            <button onclick="proceedLogout()">Yes, Logout</button>
+            <button onclick="closeLogoutModal()">Cancel</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prisoner's Case Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">Prisoner's Case Details</h1>
+
+    <!-- Search Bar -->
+    <div class="row mb-4">
+      <div class="col-md-8 offset-md-2">
+        <div class="input-group">
+          <input type="text" class="form-control" id="caseNumberInput" placeholder="Enter Case Number">
+          <button class="btn btn-primary" onclick="searchCase()">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="caseDetails" class="mt-4">
+      <h3>Case Number: <span id="caseNumber"></span></h3>
+      <!-- Personal Details -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4>Personal Details</h4>
+          <ul>
+            <li><strong>Full Name:</strong> <span id="fullName">Loading...</span></li>
+            <li><strong>Age:</strong> <span id="age">Loading...</span></li>
+            <li><strong>Gender:</strong> <span id="gender">Loading...</span></li>
+            <li><strong>Identification Number:</strong> <span id="identificationNumber">Loading...</span></li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Contact Information -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4>Contact Information</h4>
+          <ul>
+            <li><strong>Phone:</strong> <span id="phone">Loading...</span></li>
+            <li><strong>Email:</strong> <span id="email">Loading...</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Permanent Address -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4>Permanent Address</h4>
+          <ul>
+            <li><strong>Street:</strong> <span id="street">Loading...</span></li>
+            <li><strong>City:</strong> <span id="city">Loading...</span></li>
+            <li><strong>State:</strong> <span id="state">Loading...</span></li>
+            <li><strong>Postal Code:</strong> <span id="postalCode">Loading...</span></li>
+            <li><strong>Country:</strong> <span id="country">Loading...</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Case Information -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4>Case Information</h4>
+          <ul>
+            <li><strong>Charges Framed:</strong> <span id="chargesFramed">Loading...</span></li>
+            <li><strong>Date of Arrest:</strong> <span id="dateOfArrest">Loading...</span></li>
+            <li><strong>Date of Court Appearance:</strong> <span id="dateOfCourtAppearance">Loading...</span></li>
+            <li><strong>Duration of Imprisonment Served:</strong> <span id="durationOfImprisonmentServed">Loading...</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Court Details -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4>Court Details</h4>
+          <ul>
+            <li><strong>Court Name:</strong> <span id="courtName">Loading...</span></li>
+            <li><strong>Court Address:</strong> <span id="courtAddress">Loading...</span></li>
+            <li><strong>Judge Name:</strong> <span id="judgeName">Loading...</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bail Status -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4>Bail Status</h4>
+          <ul>
+            <li><strong>Bail Granted:</strong> <span id="bailGranted">Loading...</span></li>
+            <li><strong>Bail Denial Reason:</strong> <span id="bailDenialReason">Loading...</span></li>
+            <li><strong>Bail Amount:</strong> <span id="bailAmount">Loading...</span></li>
+            <li><strong>Bail Conditions:</strong> <span id="bailConditions">Loading...</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Offense Details -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4>Offense Details</h4>
+          <ul id="offenseDetails">
+            <li>Loading...</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Judicial Pronouncements -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4>Judicial Pronouncements</h4>
+          <ul>
+            <li><strong>Ruling Summary:</strong> <span id="rulingSummary">Loading...</span></li>
+            <li><strong>Precedents:</strong> <span id="precedents">Loading...</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Release Details -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4>Release Details</h4>
+          <ul>
+            <li><strong>Expected Release Date:</strong> <span id="expectedReleaseDate">Loading...</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Function to search and fetch prisoner details by case number
+    async function searchCase() {
+      const caseNumber = document.getElementById('caseNumberInput').value.trim();
+      if (!caseNumber) {
+        alert('Please enter a valid case number.');
+        return;
+      }
+
+      try {
+        const response = await axios.get(`http://localhost:5000/prisoner-details/${caseNumber}`);
+        const prisoner = response.data;
+
+        // Populate case details
+        document.getElementById('caseNumber').textContent = prisoner.case_number || 'N/A';
+        document.getElementById('fullName').textContent = prisoner.personalDetails.fullName || 'N/A';
+        document.getElementById('age').textContent = prisoner.personalDetails.age || 'N/A';
+        document.getElementById('gender').textContent = prisoner.personalDetails.gender || 'N/A';
+        document.getElementById('identificationNumber').textContent = prisoner.personalDetails.identificationNumber || 'N/A';
+
+        // Contact Information
+        document.getElementById('phone').textContent = prisoner.contactInformation.phone || 'N/A';
+        document.getElementById('email').textContent = prisoner.contactInformation.email || 'N/A';
+
+        // Permanent Address
+        document.getElementById('street').textContent = prisoner.permanentAddress.street || 'N/A';
+        document.getElementById('city').textContent = prisoner.permanentAddress.city || 'N/A';
+        document.getElementById('state').textContent = prisoner.permanentAddress.state || 'N/A';
+        document.getElementById('postalCode').textContent = prisoner.permanentAddress.postalCode || 'N/A';
+        document.getElementById('country').textContent = prisoner.permanentAddress.country || 'N/A';
+
+        // Case Information
+        document.getElementById('chargesFramed').textContent = prisoner.caseInformation.chargesFramed.join(', ') || 'N/A';
+        document.getElementById('dateOfArrest').textContent = new Date(prisoner.caseInformation.dateOfArrest).toLocaleDateString() || 'N/A';
+        document.getElementById('dateOfCourtAppearance').textContent = new Date(prisoner.caseInformation.dateOfCourtAppearance).toLocaleDateString() || 'N/A';
+        document.getElementById('durationOfImprisonmentServed').textContent = prisoner.caseInformation.durationOfImprisonmentServed || 'N/A';
+
+        // Court Details
+        document.getElementById('courtName').textContent = prisoner.courtDetails.courtName || 'N/A';
+        document.getElementById('courtAddress').textContent = prisoner.courtDetails.courtAddress || 'N/A';
+        document.getElementById('judgeName').textContent = prisoner.courtDetails.judgeName || 'N/A';
+
+        // Bail Status
+        document.getElementById('bailGranted').textContent = prisoner.bailStatus.bailGranted ? 'Granted' : 'Denied';
+        document.getElementById('bailDenialReason').textContent = prisoner.bailStatus.bailDenialReason || 'N/A';
+        document.getElementById('bailAmount').textContent = prisoner.bailStatus.bailAmount || 'N/A';
+        document.getElementById('bailConditions').textContent = prisoner.bailStatus.bailConditions || 'N/A';
+
+        // Offense Details
+        const offenseDetailsList = document.getElementById('offenseDetails');
+        offenseDetailsList.innerHTML = ''; // Clear the list before adding new items
+        prisoner.offenseDetails.forEach(offense => {
+          const offenseItem = `
+            <li><strong>Offense Category:</strong> ${offense.offenseCategory}</li>
+            <li><strong>Offense Description:</strong> ${offense.offenseDescription}</li>
+            <li><strong>Penal Provisions:</strong> ${offense.penalProvisions}</li>
+            <li><strong>Offense Date:</strong> ${new Date(offense.offenseDate).toLocaleDateString()}</li>
+            <li><strong>Investigation Status:</strong> ${offense.investigationStatus}</li>
+            <li><strong>Conviction Status:</strong> ${offense.convictionStatus}</li>
+          `;
+          offenseDetailsList.innerHTML += offenseItem;
+        });
+
+        // Judicial Pronouncements
+        document.getElementById('rulingSummary').textContent = prisoner.judicialPronouncements.rulingSummary || 'N/A';
+        document.getElementById('precedents').textContent = prisoner.judicialPronouncements.precedents.join(', ') || 'N/A';
+
+        // Release Details
+        document.getElementById('expectedReleaseDate').textContent = new Date(prisoner.releaseDetails.expectedReleaseDate).toLocaleDateString() || 'N/A';
+      } catch (error) {
+        console.error('Error fetching prisoner details:', error);
+        alert('An error occurred while fetching the details. Please check the case number and try again.');
+      }
+    }
+  </script>
+</body>
+</html>

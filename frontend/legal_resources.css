@@ -1,0 +1,152 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Font Settings */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container */
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: #1a2b49;  /* Changed to the header color from css-1 */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+header .logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+header .quote {
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #34495e; /* Changed to the navbar color from css-1 */
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar li {
+    margin: 0 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.navbar a:hover, .navbar a.active {
+    color: #ffac41; /* Accent color from css-1 */
+}
+
+/* Legal Content Section */
+.legal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.legal-content h2 {
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.legal-content p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.legal-content ul {
+    list-style: none;
+    padding-left: 20px;
+    margin-top: 15px;
+}
+
+.legal-content ul li {
+    margin-bottom: 10px;
+}
+
+.legal-content ul li a {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+.legal-content ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1a2b49; /* Changed to the footer color from css-1 */
+    color: white;
+    margin-top: 30px;
+    border-radius: 5px;
+}
+
+footer a {
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar li {
+        margin: 10px 0;
+    }
+}

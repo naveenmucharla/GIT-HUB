@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Police Account - QuickBail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 145px;
+            height: 125px;
+        }
+
+        h6 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 38px;
+            cursor: pointer;
+            color: #ccc;
+        }
+        .eye-icon:hover {
+            color: #555;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #3498db;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        .footer .contact-info {
+            margin: 10px 0;
+        }
+
+        .footer .social-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="E:\Naveen\Sri Indu\SIH\Images\quick-bail-high-resolution-logo - Copy.png" alt="QuickBail Logo" class="logo">
+        <h6>Create Police Account</h6>
+
+        <form action="police_dashboard.html" method="POST">
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="police-fullname">Full Name *</label>
+                <input type="text" id="police-fullname" name="fullname" placeholder="Enter your full name" required>
+            </div>
+
+            <!-- Aadhar Card Number -->
+            <div class="form-group">
+                <label for="police-aadhar">Aadhar Card Number *</label>
+                <input type="text" id="police-aadhar" name="aadhar" placeholder="Enter your Aadhar card number" required>
+            </div>
+
+            <!-- Username -->
+            <div class="form-group">
+                <label for="police-username">Username *</label>
+                <input type="text" id="police-username" name="username" placeholder="Enter your username" required>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="police-password">Password *</label>
+                <input type="password" id="police-password" name="password" placeholder="Enter your password" required>
+                <i class="fa fa-eye eye-icon" onclick="togglePassword('police-password')"></i>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <label for="police-confirm-password">Confirm Password *</label>
+                <input type="password" id="police-confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+                <i class="fa fa-eye eye-icon" onclick="togglePassword('police-confirm-password')"></i>
+            </div>
+
+            <!-- Rank -->
+            <div class="form-group">
+                <label for="police-rank">Rank *</label>
+                <input type="text" id="police-rank" name="rank" placeholder="Enter your rank (e.g., Inspector, Constable)" required>
+            </div>
+
+            <!-- Police Station -->
+            <div class="form-group">
+                <label for="police-station">Police Station *</label>
+                <input type="text" id="police-station" name="station" placeholder="Enter your police station name" required>
+            </div>
+
+            <!-- District -->
+            <div class="form-group">
+                <label for="police-district">District *</label>
+                <input type="text" id="police-district" name="district" placeholder="Enter your district name" required>
+            </div>
+
+            <!-- Division -->
+            <div class="form-group">
+                <label for="police-division">Division *</label>
+                <input type="text" id="police-division" name="division" placeholder="Enter your division name" required>
+            </div>
+
+            <!-- Contact Number -->
+            <div class="form-group">
+                <label for="police-contact">Contact Number *</label>
+                <input type="text" id="police-contact" name="contact" placeholder="Enter your contact number" required>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="police-email">Email *</label>
+                <input type="email" id="police-email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <!-- Badge Number -->
+            <div class="form-group">
+                <label for="police-badge">Badge Number *</label>
+                <input type="text" id="police-badge" name="badge" placeholder="Enter your badge number" required>
+            </div>
+
+            <button type="submit">Create Police Account</button>
+            <button type="button" onclick="window.location.href='police_login.html'" style="margin-top: 10px; background-color: #2ecc71;">Already have an Account? Login</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>QuickBail - Streamlining Justice</p>
+        <div class="contact-info">
+            Contact us: <a href="mailto:info@quickbail.com">info@quickbail.com</a> | + 91 910-057-0066
+        </div>
+        <div class="social-links">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Function to toggle password visibility
+        function togglePassword(id) {
+            var passwordField = document.getElementById(id);
+            var icon = passwordField.nextElementSibling; // Get the eye icon
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+    </script>
+
+</body>
+</html>

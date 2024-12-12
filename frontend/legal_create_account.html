@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBail - Create Account (Legal Aid Provider)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 145px;
+            height: 125px;
+        }
+
+        h6 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .mandatory {
+            color: #e74c3c;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #3498db;
+            color: white;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        .footer .contact-info {
+            margin: 10px 0;
+        }
+
+        .footer .social-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        /* Eye icon CSS */
+        .password-container {
+            position: relative;
+        }
+
+        .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 38px;
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        .eye-icon:hover {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Logo -->
+        <img src="E:\Naveen\Sri Indu\SIH\Images\quick-bail-high-resolution-logo - Copy.png" alt="QuickBail Logo" class="logo">
+
+        <h6>Create Account - Legal Aid Provider</h6>
+
+        <form action="/submit_legal_aid_account" method="POST" //enctype="multipart/form-data">
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="legal-name">Full Name <span class="mandatory">*</span></label>
+                <input type="text" id="legal-name" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <!-- Username -->
+            <div class="form-group">
+                <label for="legal-username">Username <span class="mandatory">*</span></label>
+                <input type="text" id="legal-username" name="username" placeholder="Choose a username" required>
+            </div>
+
+            <!-- Confirm Username -->
+            <div class="form-group">
+                <label for="legal-confirm-username">Confirm Username <span class="mandatory">*</span></label>
+                <input type="text" id="legal-confirm-username" name="confirm-username" placeholder="Confirm your username" required>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group password-container">
+                <label for="legal-password">Password <span class="mandatory">*</span></label>
+                <input type="password" id="legal-password" name="password" placeholder="Choose a password" required>
+                <i class="fas fa-eye eye-icon" id="toggle-legal-password" onclick="togglePassword('legal-password')"></i>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group password-container">
+                <label for="legal-confirm-password">Confirm Password <span class="mandatory">*</span></label>
+                <input type="password" id="legal-confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                <i class="fas fa-eye eye-icon" id="toggle-legal-confirm-password" onclick="togglePassword('legal-confirm-password')"></i>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="legal-email">Email <span class="mandatory">*</span></label>
+                <input type="email" id="legal-email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <!-- Legal Aid Provider ID -->
+            <div class="form-group">
+                <label for="legal-id">Legal Aid Provider ID <span class="mandatory">*</span></label>
+                <input type="text" id="legal-id" name="legal-id" placeholder="Enter your provider ID" required>
+            </div>
+
+            <!-- Contact Number -->
+            <div class="form-group">
+                <label for="legal-contact">Contact Number <span class="mandatory">*</span></label>
+                <input type="text" id="legal-contact" name="contact" placeholder="Enter your contact number" required>
+            </div>
+
+            <!-- Aadhar Card Number -->
+            <div class="form-group">
+                <label for="legal-aadhar">Aadhar Card Number <span class="mandatory">*</span></label>
+                <input type="text" id="legal-aadhar" name="aadhar" placeholder="Enter your Aadhar number" required>
+            </div>
+
+            <!-- Bar Council Registration Number -->
+            <div class="form-group">
+                <label for="legal-bar-council">Bar Council Registration Number <span class="mandatory">*</span></label>
+                <input type="text" id="legal-bar-council" name="bar-council" placeholder="Enter your Bar Council Registration Number" required>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <label for="legal-address">Permanent Address <span class="mandatory">*</span></label>
+                <textarea id="legal-address" name="address" placeholder="Enter your permanent address" required></textarea>
+            </div>
+
+
+            <!-- City -->
+            <div class="form-group">
+                <label for="legal-city">City <span class="mandatory">*</span></label>
+                <input type="text" id="legal-city" name="city" placeholder="Enter your city" required>
+            </div>
+
+            <!-- State -->
+            <div class="form-group">
+                <label for="legal-state">State <span class="mandatory">*</span></label>
+                <input type="text" id="legal-state" name="state" placeholder="Enter your state" required>
+            </div>
+
+            <!-- Postal Code -->
+            <div class="form-group">
+                <label for="legal-zipcode">Postal Code <span class="mandatory">*</span></label>
+                <input type="text" id="legal-zipcode" name="zipcode" placeholder="Enter your postal code" required>
+            </div>
+
+            <!-- Documents Upload (optional) -->
+            
+            <div class="form-group">
+                <label for="legal-documents">Upload Supporting Documents <span class="mandatory">*</span></label>
+                <input type="file" id="legal-documents" name="documents" required>
+            </div>
+            
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>QuickBail - Streamlining Justice</p>
+        <div class="contact-info">
+            <p>Email: support@quickbail.com | Phone: +91 910 057 0066</p>
+        </div>
+        <div class="social-links">
+            <a href="https://twitter.com/QuickBail" target="_blank" title="Follow us on Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/quickbail" target="_blank" title="Follow us on LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle password visibility function
+        function togglePassword(passwordFieldId, iconElement) {
+            var passwordField = document.getElementById(passwordFieldId);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                iconElement.classList.remove("fa-eye");
+                iconElement.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                iconElement.classList.remove("fa-eye-slash");
+                iconElement.classList.add("fa-eye");
+            }
+        }
+    </script>
+
+
+</body>
+</html>
+

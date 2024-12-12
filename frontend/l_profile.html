@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Legal Aid Provider Profile</title>
+    <link rel="stylesheet" href="l_profile.css">
+</head>
+
+<body>
+    <div class="update-container">
+        <h1>Update Profile</h1>
+        <form id="updateForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact Number:</label>
+                <input type="tel" id="contact" name="contact" placeholder="Enter your contact number" required>
+            </div>
+            <div class="form-group">
+                <label for="license">License Number:</label>
+                <input type="text" id="license" name="license" placeholder="Enter your license number" required>
+            </div>
+            <div class="form-group">
+                <label for="degree">Degree Level:</label>
+                <select id="degree" name="degree" required>
+                    <option value="" disabled selected>Select your degree level</option>
+                    <option value="llb">LLB</option>
+                    <option value="llm">LLM</option>
+                    <option value="phd">PhD in Law</option>
+                    <option value="diploma">Diploma in Law</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="specialization">Specialization:</label>
+                <select id="specialization" name="specialization" required>
+                    <option value="" disabled selected>Select your specialization</option>
+                    <option value="criminal-law">Criminal Law</option>
+                    <option value="civil-law">Civil Law</option>
+                    <option value="family-law">Family Law</option>
+                    <option value="corporate-law">Corporate Law</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="experience">Years of Experience:</label>
+                <input type="number" id="experience" name="experience" placeholder="Enter years of experience" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" placeholder="Enter your District, State" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Office Address:</label>
+                <textarea id="address" name="address" rows="4" placeholder="Enter your office address" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="profile-photo">Profile Photo:</label>
+                <input type="file" id="profile-photo" name="profile-photo" accept="image/*">
+            </div>
+            <div class="form-actions">
+                <button type="submit">Submit</button>
+                <button type="button" onclick="window.location.href='legal-aid-dashboard.html'">Cancel</button>
+            </div>
+        </form>
+
+        <!-- Success Message -->
+        <div id="successMessage" style="display: none; color: green; margin-top: 20px;">
+            <p>Legal Aid Provider profile created successfully!</p>
+            <button onclick="window.location.href='legal-aid-dashboard.html'">OK</button>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" style="display: none; color: red; margin-top: 20px;">
+            <p id="errorText"></p>
+            <button onclick="clearError()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // Handle form submission
+      // Handle form submission
+document.getElementById('updateForm').onsubmit = async function (event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    try {
+        const response = await fetch('/api/update-legal-aid-profile', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.message === 'Profile created successfully!') {
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('updateForm').reset(); // Reset form after successful submission
+        } else {
+            // Show error message if the email or license is already in use
+            showError(result.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showError('Error saving profile');
+    }
+};
+
+// Show error message
+function showError(message) {
+    document.getElementById('errorText').textContent = message;
+    document.getElementById('errorMessage').style.display = 'block';
+}
+
+// Clear error message
+function clearError() {
+    document.getElementById('errorMessage').style.display = 'none';
+}
+
+    </script>
+</body>
+
+</html>

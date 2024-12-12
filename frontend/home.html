@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBail - Login</title>
+    <link rel="stylesheet" href="style.css"> <!-- Linking to the CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- FontAwesome for icons -->
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <div class="logo-container">
+                <img src="images/quick-bail-high-resolution-logo.png" alt="QuickBail Logo" class="logo">
+                <h1>BAIL RECKONER</h1>
+                <p class="quote">"Justice delayed is freedom denied."</p>
+            </div>
+            <!-- Home Button -->
+            <div class="home-button">
+                <a href="index.html" class="home-btn active">Home</a> <!-- The 'active' class can be dynamically added based on the current page -->
+            </div>
+            
+        </header>
+
+        <!-- Dashboards Section -->
+        <section id="dashboards" class="dashboards">
+            <h2>Dashboards</h2>
+            <div class="dashboard-container">
+                <div class="dashboard-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Undertrial Prisoners</h3>
+                    <p>Track your eligibility and understand the bail process.</p>
+                    <div class="tab active" id="prisoner-tab" onclick="showForm('prisoner')">Undertrial Prisoners</div>
+                </div>
+                <div class="dashboard-card">
+                    <i class="fas fa-gavel"></i>
+                    <h3>Legal Aid Providers</h3>
+                    <p>Assist clients with accurate bail applications.</p>
+                    <div class="tab" id="legal-tab" onclick="showForm('legal')">Legal Aid Providers</div>
+                </div>
+                <div class="dashboard-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Judicial Authorities</h3>
+                    <p>Streamline evaluation and ensure timely decisions.</p>
+                    <div class="tab" id="judge-tab" onclick="showForm('judge')">Judicial Authorities</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Forms -->
+        <form class="login-form active" id="prisoner-form" action="/login/prisoner" method="POST">
+            <div class="form-group">
+                <label for="prisoner-username">Username</label>
+                <input type="text" id="prisoner-username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="prisoner-password">Password</label>
+                <input type="password" id="prisoner-password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit">Login as Undertrial Prisoner</button>
+            <button type="button" onclick="window.location.href='prisoner_create_account.html'" class="create-account">Create a New Account</button>
+        </form>
+
+        <form class="login-form" id="legal-form" action="/login/legal" method="POST">
+            <div class="form-group">
+                <label for="legal-username">Username</label>
+                <input type="text" id="legal-username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="legal-password">Password</label>
+                <input type="password" id="legal-password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit">Login as Legal Aid Provider</button>
+            <button type="button" onclick="window.location.href='legal_create_account.html'" class="create-account">Create a New Account</button>
+        </form>
+
+        <form class="login-form" id="judge-form" action="/login/judge" method="POST">
+            <div class="form-group">
+                <label for="judge-username">Username</label>
+                <input type="text" id="judge-username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="judge-password">Password</label>
+                <input type="password" id="judge-password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit">Login as Judicial Authority</button>
+            <button type="button" onclick="window.location.href='judge_create_account.html'" class="create-account">Create a New Account</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>QuickBail - Streamlining Justice</p>
+        <div class="contact-info">
+            Contact us: <a href="mailto:info@quickbail.com">info@quickbail.com</a> | +91 910-057-0066
+        </div>
+        <div class="social-links">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script> <!-- Linking to the JavaScript file -->
+</body>
+</html>

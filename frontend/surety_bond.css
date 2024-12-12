@@ -1,0 +1,155 @@
+/* Reset all styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 0;
+    margin: 0;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar .tabs a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.navbar .user-options a {
+    color: white;
+    margin-left: 20px;
+}
+
+/* Main container for surety bond text */
+.main-container {
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the text block of the bond */
+.bond-text {
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Title and headings */
+
+.bond-text h2 {
+    font-size: 1.8rem;
+    border-style:double;
+    box-shadow: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 2px;
+}
+.bond-text h4 {
+    font-size: 1 rem;
+    padding-bottom: 1px;
+    margin-bottom: 1px;
+    font-weight: bold;
+    text-align: center;
+}
+.bond-text h6 {
+    font-size: 1 rem;
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* Bold text for important parts */
+.bond-text strong {
+    font-weight: bold;
+}
+
+/* Paragraph styling */
+.bond-text p {
+    margin-bottom: 15px;
+    word-wrap: break-word;
+}
+
+/* Add extra spacing for large sections of text */
+.bond-text p.long-text {
+    margin-bottom: 30px;
+}
+
+/* Signature fields and witnesses */
+.bond-text .signature-field {
+    margin-top: 20px;
+}
+
+.bond-text .signature-field p {
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 45%;
+    text-align: center;
+    border-top: 1px solid #000;
+    padding-top: 10px;
+}
+
+.bond-text .signature-field .witnesses {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bond-text .signature-field .witnesses div {
+    width: 48%;
+}
+
+/* Line for separation */
+hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+footer .social-icons {
+    margin-top: 10px;
+}
+
+footer .social-icons .social-icon {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/* Social icons */
+footer .social-icons .social-icon i {
+    font-size: 1.5rem;
+}

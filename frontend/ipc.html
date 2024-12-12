@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharatiya Nyaya Sanhita (BNYS) - Sections</title>
+    <link rel="stylesheet" href="ipc.css">
+</head>
+<body>
+
+    <header>
+        <h1>Bharatiya Nyaya Sanhita (BNYS) - Sections</h1>
+    </header>
+
+    <div class="container">
+        <h2>BNYS Sections</h2>
+
+        <!-- Search Bar -->
+        <input type="text" id="search-bar" placeholder="Search BNYS Sections..." onkeyup="filterSections()">
+
+        <!-- Filter Options -->
+        <div class="filter-options">
+            <label>
+                <input type="radio" name="filter" value="all" checked onclick="filterSections()"> Show All
+            </label>
+            <label>
+                <input type="radio" name="filter" value="bailable" onclick="filterSections()"> Bailable Only
+            </label>
+            <label>
+                <input type="radio" name="filter" value="non-bailable" onclick="filterSections()"> Non-Bailable Only
+            </label>
+        </div>
+
+        <!-- BNYS Sections List -->
+        <div id="sections-data" class="sections-data">
+            <!-- Sections data will be populated here -->
+        </div>
+    </div>
+
+    <footer>
+        <p>QuickBail - Streamlining Justice for Undertrial Prisoners</p>
+    </footer>
+
+    <script>
+        const bnysSections = [
+    { section: "BNYS 1", description: "Short title, extent and commencement", offense: "Defines the scope and commencement of the Code", punishment: "No punishment", bailable: "Yes" },
+    { section: "BNYS 2", description: "Interpretation", offense: "Defines key terms used in the Code", punishment: "No punishment", bailable: "Yes" },
+    { section: "BNYS 3", description: "Punishment for offenses committed within India", offense: "Punishment for acts committed within the jurisdiction of India", punishment: "Varies depending on offense", bailable: "Depends on offense" },
+    { section: "BNYS 4", description: "Punishment for offenses committed outside India", offense: "Punishment for acts committed outside India", punishment: "Varies depending on offense", bailable: "Depends on offense" },
+    { section: "BNYS 5", description: "Power of the Court to try offenses", offense: "Outlines the authority of courts to try offenses under this Code", punishment: "No punishment", bailable: "Yes" },
+    { section: "BNYS 6", description: "Offenses committed in the course of employment", offense: "Defines offenses committed by employees during the course of employment", punishment: "Varies depending on offense", bailable: "Depends on offense" },
+    { section: "BNYS 7", description: "Presumption of innocence", offense: "Outlines the presumption of innocence until proven guilty", punishment: "No punishment", bailable: "Yes" },
+    { section: "BNYS 8", description: "General exceptions", offense: "List of circumstances under which a person is not guilty", punishment: "No punishment", bailable: "Yes" },
+    { section: "BNYS 9", description: "Act done by a person who is not criminally responsible", offense: "Details actions of individuals who are not criminally responsible due to mental health", punishment: "Varies", bailable: "Yes" },
+    { section: "BNYS 10", description: "Mistake of fact", offense: "Exempts criminal liability for actions done under a mistaken belief of facts", punishment: "No punishment", bailable: "Yes" },
+    { section: "BNYS 11", description: "Punishment for murder", offense: "The act of intentionally killing a person", punishment: "Death or life imprisonment", bailable: "No" },
+    { section: "BNYS 12", description: "Culpable homicide", offense: "Causing death without the intent to kill but with knowledge of the danger", punishment: "Up to 10 years of imprisonment", bailable: "Yes" },
+    { section: "BNYS 13", description: "Attempt to commit murder", offense: "Attempting to kill a person", punishment: "Up to 10 years of imprisonment or life imprisonment", bailable: "No" },
+    { section: "BNYS 14", description: "Infanticide", offense: "Killing a child under 12 months of age by a mother", punishment: "Up to 7 years of imprisonment", bailable: "Yes" },
+    { section: "BNYS 15", description: "Death by negligence", offense: "Causing death due to negligent actions", punishment: "Up to 5 years of imprisonment", bailable: "Yes" },
+    { section: "BNYS 16", description: "Murder by intoxication", offense: "Killing someone under the influence of intoxicants", punishment: "Death or life imprisonment", bailable: "No" },
+    { section: "BNYS 17", description: "Attempt to suicide", offense: "Attempting to take one's own life", punishment: "Up to 1 year of imprisonment", bailable: "Yes" },
+    { section: "BNYS 18", description: "Causing hurt", offense: "Inflicting bodily injury on another person", punishment: "Up to 1 year of imprisonment or fine", bailable: "Yes" },
+    { section: "BNYS 19", description: "Grievous hurt", offense: "Causing serious bodily harm", punishment: "Up to 7 years of imprisonment", bailable: "Yes" },
+    { section: "BNYS 20", description: "Voluntary causing hurt", offense: "Intentionally inflicting harm on another person", punishment: "Up to 3 years of imprisonment", bailable: "Yes" },
+    { section: "BNYS 21", description: "Criminal assault", offense: "Assault with the intention of committing further crimes", punishment: "Up to 3 years of imprisonment", bailable: "Yes" },
+    { section: "BNYS 22", description: "Sexual assault", offense: "Unlawful sexual contact or behavior", punishment: "Up to 7 years of imprisonment", bailable: "No" },
+    { section: "BNYS 23", description: "Harassment", offense: "Repeated and unlawful behavior intended to disturb or harm another", punishment: "Up to 2 years of imprisonment", bailable: "Yes" },
+    { section: "BNYS 24", description: "Kidnapping", offense: "Unlawfully taking or detaining a person", punishment: "Up to 7 years of imprisonment", bailable: "Yes" },
+
+    // Example continues, the structure can repeat for sections 25 to 160
+    { section: "BNYS 160", description: "Punishment for rioting", offense: "Participating in a violent public disturbance", punishment: "Up to 2 years of imprisonment or fine", bailable: "Yes" },
+];
+
+        function displaySections() {
+            const sectionsData = document.getElementById('sections-data');
+            sectionsData.innerHTML = '';
+            bnysSections.forEach(section => {
+                const sectionDiv = document.createElement('div');
+                sectionDiv.classList.add('section-item');
+                sectionDiv.innerHTML = `
+                    <h3>${section.section}</h3>
+                    <p><strong>Description:</strong> ${section.description}</p>
+                    <p><strong>Offense:</strong> ${section.offense}</p>
+                    <p><strong>Punishment:</strong> ${section.punishment}</p>
+                    <p><strong>Bailable:</strong> ${section.bailable}</p>
+                `;
+                sectionsData.appendChild(sectionDiv);
+            });
+        }
+
+        function filterSections() {
+            const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+            const filterOption = document.querySelector('input[name="filter"]:checked').value;
+            const sectionsData = document.getElementById('sections-data');
+
+            sectionsData.innerHTML = '';
+
+            bnysSections.forEach(section => {
+                const matchesSearch = section.section.toLowerCase().includes(searchTerm) ||
+                                      section.description.toLowerCase().includes(searchTerm) ||
+                                      section.offense.toLowerCase().includes(searchTerm);
+
+                const matchesFilter = filterOption === 'all' ||
+                                      (filterOption === 'bailable' && section.bailable === 'Yes') ||
+                                      (filterOption === 'non-bailable' && section.bailable === 'No');
+
+                if (matchesSearch && matchesFilter) {
+                    const sectionDiv = document.createElement('div');
+                    sectionDiv.classList.add('section-item');
+                    sectionDiv.innerHTML = `
+                        <h3>${section.section}</h3>
+                        <p><strong>Description:</strong> ${section.description}</p>
+                        <p><strong>Offense:</strong> ${section.offense}</p>
+                        <p><strong>Punishment:</strong> ${section.punishment}</p>
+                        <p><strong>Bailable:</strong> ${section.bailable}</p>
+                    `;
+                    sectionsData.appendChild(sectionDiv);
+                }
+            });
+        }
+
+        window.onload = displaySections;
+    </script>
+</body>
+</html>

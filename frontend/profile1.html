@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Judge's Profile Page</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header, footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    header {
+      top: 0;
+    }
+
+    footer {
+      bottom: 0;
+    }
+
+    .container {
+      margin-top: 80px;
+      margin-bottom: 80px;
+      padding: 20px;
+    }
+
+    .profile-card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+    }
+
+    .profile-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-right: 20px;
+      border: 2px solid #ddd;
+    }
+
+    .profile-details {
+      flex: 1;
+    }
+
+    .profile-details h2 {
+      margin: 0;
+    }
+
+    .section {
+      margin-top: 40px;
+    }
+
+    .section h3 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .section p, .section ul {
+      margin-bottom: 20px;
+      color: #666;
+    }
+
+    .section ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .section ul li {
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .section ul li:last-child {
+      border-bottom: none;
+    }
+
+    .calendar, .tools, .notes, .settings {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Judge's Profile</h1>
+  </header>
+  
+  <div class="container">
+    <div class="profile-card">
+      <img src="judge-photo.jpg" alt="Judge Photo" class="profile-photo">
+      <div class="profile-details">
+        <h2>Judge's Name</h2>
+        <p>Designation at XYZ Court</p>
+        <p>Contact: XXXXXXXXXX</p>
+        <p>Email-id: judge@example.com</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Professional Summary</h3>
+      <p>Brief biography highlighting the judge's career, notable cases, and areas of expertise.</p>
+    </div>
+
+    <div class="section">
+      <h3>Current Cases</h3>
+      <ul>
+        <li>Case 1 - Status: Ongoing - Next Hearing: Date</li>
+        <li>Case 2 - Status: Pending - Next Hearing: Date</li>
+        <!-- Add more cases as needed -->
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Past Judgments</h3>
+      <p>Access to previous judgments delivered by the judge.</p>
+    </div>
+
+    <div class="section">
+      <h3>Calendar</h3>
+      <p>View of the day's hearings and meetings.</p>
+    </div>
+
+    <div class="section">
+      <h3>Legal Reference</h3>
+      <p>Quick access to relevant legal provisions, acts, and statutes.</p>
+    </div>
+
+    <div class="section">
+      <h3>Notes and Annotations</h3>
+      <p>Section to jot down notes related to cases.</p>
+    </div>
+
+    <div class="section">
+      <h3>Tools and Resources</h3>
+      <p>Direct access to the Bail Reckoner tool for bail evaluations.</p>
+    </div>
+
+    <div class="section">
+      <h3>Settings</h3>
+      <p>Update personal information and preferences.</p>
+    </div>
+  </div>
+  
+  <footer>
+    <p>&copy; 2024 Legal Aid System. All rights reserved.</p>
+  </footer>
+</body>
+</html>
